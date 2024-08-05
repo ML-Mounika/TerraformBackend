@@ -1,11 +1,14 @@
-provider "aws" {
-region = "us-east-1"
-}
-resource "aws_instance" "instance1" {
-  ami           = "ami-08a0d1e16fc3f61ea"
-  instance_type = "t2.micro"
+AWSTemplateFormatVersion: '2010-09-09'
 
-  tags = {
-    name = "My-Demo-Instances-Demo"
-  }
-}
+Description: Test Resource Group..
+Parameters:    
+  RGText:
+    Type: String
+  RGTextOne:
+    Type: String
+Resources:
+  ResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name: !Ref RGText
+      Description: A test resource group that is created by FD12
